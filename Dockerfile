@@ -89,13 +89,14 @@ RUN --mount=type=cache,target=/data/.npm \
 RUN curl -L https://github.com/azlux/uv/releases/latest/download/uv-linux-x64 -o /usr/local/bin/uv && \
     chmod +x /usr/local/bin/uv
 
-# Claude + Kimi
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl wget bash && \
-    rm -rf /var/lib/apt/lists/* && \
-    wget -qO- https://claude.ai/install.sh | bash && \
-    wget -qO- https://code.kimi.com/install.sh | bash && \
-    command -v uv
+# Claude + Kimi (temporarily disabled)
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends curl wget bash && \
+#     rm -rf /var/lib/apt/lists/* && \
+#     wget -qO- https://claude.ai/install.sh | bash && \
+#     wget -qO- https://code.kimi.com/install.sh | bash && \
+#     command -v uv
+RUN command -v uv
 
 # Make sure uv and other local bins are available
 ENV PATH="/root/.local/bin:${PATH}"
