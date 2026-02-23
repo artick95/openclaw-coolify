@@ -90,7 +90,8 @@ RUN curl -L https://github.com/azlux/uv/releases/latest/download/uv-linux-x64 -o
     chmod +x /usr/local/bin/uv
 
 # Claude + Kimi
-RUN curl -fsSL https://claude.ai/install.sh | bash && \
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/* && \
+    curl -fsSL https://claude.ai/install.sh | bash && \
     curl -L https://code.kimi.com/install.sh | bash && \
     command -v uv
 
