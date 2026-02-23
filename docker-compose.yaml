@@ -89,7 +89,13 @@ services:
 
       # Secure: Socket mount removed in favor of proxy
       # - /var/run/docker.sock:/var/run/docker.sock
-
+    
+    # Claude + Kimi
+    RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/* && \
+    curl -fsSL https://claude.ai/install.sh | bash && \
+    curl -L https://code.kimi.com/install.sh | bash && \
+    command -v uv
+    
     depends_on:
       - docker-proxy
 
